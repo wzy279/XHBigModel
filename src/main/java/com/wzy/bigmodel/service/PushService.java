@@ -1,6 +1,6 @@
 package com.wzy.bigmodel.service;
 
-import com.wzy.bigmodel.bean.ResultBean;
+import com.wzy.bigmodel.BigModel.ResultBean;
 
 /**
  * @description

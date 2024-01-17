@@ -1,8 +1,8 @@
 package com.wzy.bigmodel.listener;
 
 import com.alibaba.fastjson.JSON;
-import com.wzy.bigmodel.bean.JsonParse;
-import com.wzy.bigmodel.bean.Text;
+import com.wzy.bigmodel.BigModel.JsonParse;
+import com.wzy.bigmodel.BigModel.Text;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import okhttp3.WebSocket;
@@ -25,6 +25,7 @@ public class XFWebSocketListener extends WebSocketListener {
     //语句组装buffer，将大模型返回结果全部接收，在组装成一句话返回
     private StringBuilder answer = new StringBuilder();
 
+
     public String getAnswer() {
         return answer.toString();
     }
@@ -32,6 +33,7 @@ public class XFWebSocketListener extends WebSocketListener {
     public boolean isWsCloseFlag() {
         return wsCloseFlag;
     }
+
 
     @Override
     public void onOpen(WebSocket webSocket, Response response) {

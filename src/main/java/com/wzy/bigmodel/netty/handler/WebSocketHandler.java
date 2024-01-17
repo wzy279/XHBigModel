@@ -2,8 +2,8 @@ package com.wzy.bigmodel.netty.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.wzy.bigmodel.bean.NettyGroup;
-import com.wzy.bigmodel.bean.ResultBean;
+import com.wzy.bigmodel.BigModel.NettyGroup;
+import com.wzy.bigmodel.BigModel.ResultBean;
 import com.wzy.bigmodel.service.PushService;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -29,7 +29,7 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        log.info("handlerAdded被调用,{}", JSON.toJSONString(ctx));
+        log.info("handlerAdded被调用,{}", ctx.toString());
         //todo 添加校验功能，校验合法后添加到group中
 
         // 添加到channelGroup 通道组

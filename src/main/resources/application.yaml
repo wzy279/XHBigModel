@@ -1,8 +1,0 @@
-xf:
-  config:
-    max-response-time: 30
-    api-key: xxxx
-    host-url: https://spark-api.xf-yun.com/v2.1/chat
-    app-id: xxxx
-    api-secret: xxxx
-

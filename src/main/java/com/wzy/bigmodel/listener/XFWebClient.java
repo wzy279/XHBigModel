@@ -3,7 +3,7 @@ package com.wzy.bigmodel.listener;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.wzy.bigmodel.bean.RoleContent;
+import com.wzy.bigmodel.BigModel.RoleContent;
 import com.wzy.bigmodel.config.XFConfig;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;

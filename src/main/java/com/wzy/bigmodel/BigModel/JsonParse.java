@@ -1,4 +1,4 @@
-package com.wzy.bigmodel.bean;
+package com.wzy.bigmodel.BigModel;
 
 import lombok.Data;
 

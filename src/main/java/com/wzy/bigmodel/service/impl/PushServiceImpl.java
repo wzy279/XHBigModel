@@ -1,9 +1,10 @@
 package com.wzy.bigmodel.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.wzy.bigmodel.bean.NettyGroup;
-import com.wzy.bigmodel.bean.ResultBean;
-import com.wzy.bigmodel.bean.RoleContent;
+import com.wzy.bigmodel.BigModel.NettyGroup;
+import com.wzy.bigmodel.BigModel.ResultBean;
+import com.wzy.bigmodel.BigModel.RoleContent;
+import com.wzy.bigmodel.SocketConfig.MyWebSocket;
 import com.wzy.bigmodel.config.XFConfig;
 import com.wzy.bigmodel.listener.XFWebClient;
 import com.wzy.bigmodel.listener.XFWebSocketListener;
@@ -33,6 +34,9 @@ public class PushServiceImpl implements PushService {
 
     @Autowired
     private XFWebClient xfWebClient;
+
+    @Autowired
+    MyWebSocket myWebSocket;
 
     @Override
     public void pushToOne(String uid, String text) {
@@ -69,6 +73,7 @@ public class PushServiceImpl implements PushService {
     @Override
     public synchronized ResultBean pushMessageToXFServer(String uid, String text) {
         RoleContent userRoleContent = RoleContent.createUserRoleContent(text);
+        //TODO 修改这个question可以把历史记录存起来
         ArrayList<RoleContent> questions = new ArrayList<>();
         questions.add(userRoleContent);
         XFWebSocketListener xfWebSocketListener = new XFWebSocketListener();
@@ -82,6 +87,9 @@ public class PushServiceImpl implements PushService {
             int maxCount = xfConfig.getMaxResponseTime() * 5;
             while (count <= maxCount) {
                 Thread.sleep(200);
+                String nowAnswer = xfWebSocketListener.getAnswer();
+                myWebSocket.sendMessage(uid, nowAnswer);
+                log.info("nowAnswer:{}", nowAnswer);
                 if (xfWebSocketListener.isWsCloseFlag()) {
                     break;
                 }

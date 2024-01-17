@@ -1,6 +1,8 @@
-package com.wzy.bigmodel.bean;
+package com.wzy.bigmodel.BigModel;
 
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * @description
@@ -8,6 +10,6 @@ import lombok.Data;
  * @create: 2023-11-04 10:50
  **/
 @Data
-public class Payload {
-    Choices choices;
+public class Choices {
+    List<Text> text;
 }
